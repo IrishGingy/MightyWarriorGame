@@ -10,6 +10,7 @@ public class Shooting : MonoBehaviour
     // obstacle that is shot out.
     [SerializeField] GameObject obstacle;
     [SerializeField] int obstacleCount;
+    [SerializeField] float timeRemaining = 10f;
 
     private Stack<GameObject> obstacles = new Stack<GameObject>();
     private float[] pattern2 = new float[2];
@@ -21,7 +22,6 @@ public class Shooting : MonoBehaviour
     public float lifeSpan = 5f;
     public float launchVelocity = 500f;
 
-    private float timeRemaining = 10;
     private bool timerIsRunning = false;
     public Vector3 spawnPos;
     private bool destroyed = false;
