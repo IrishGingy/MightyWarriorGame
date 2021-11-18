@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97ca5ec0ff0386f4395037d91962a6ad, type: 3}
-  m_Name: TestDefaultItem
+  m_Name: Bottle01
   m_EditorClassIdentifier: 
   name: Bottle
   icon: {fileID: 21300000, guid: 20641e4796406b84ba785a5fdf855e72, type: 3}
-  isDefaultItem: 1
+  isDefaultItem: 0

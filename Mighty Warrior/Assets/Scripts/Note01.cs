@@ -7,14 +7,14 @@ public class Note01 : MonoBehaviour
     public Item item;
 
     public float TheDistance;
-    public GameObject ActionDisplay;
-    public GameObject ActionText;
-    public GameObject UINote;
+    //public GameObject ActionDisplay;
+    //public GameObject ActionText;
+    //public GameObject UINote;
     public GameObject ThePlayer;
     public GameObject NoteCam;
     public GameObject note;
-    public Material[] materials;
-    public Canvas canvas;
+    //public Material[] materials;
+    //public Canvas canvas;
 
     bool readingNote;
     Renderer rend;
@@ -23,7 +23,7 @@ public class Note01 : MonoBehaviour
     private void Start()
     {
         rend = note.GetComponent<Renderer>();
-        rend.material = materials[mat];
+        //rend.material = materials[mat];
     }
 
     // Update is called once per frame
@@ -34,6 +34,7 @@ public class Note01 : MonoBehaviour
 
         if (readingNote)
         {
+            /*
             if (Input.GetKeyDown(KeyCode.A) && mat > 0)
             {
                 mat--;
@@ -44,12 +45,13 @@ public class Note01 : MonoBehaviour
                 mat++;
                 rend.material = materials[mat];
             }
+            */
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 readingNote = false;
                 ThePlayer.SetActive(true);
                 NoteCam.SetActive(false);
-                UINote.SetActive(false);
+                //UINote.SetActive(false);
 
                 bool wasPickedUp = Inventory.instance.Add(item);
                 if (wasPickedUp)
@@ -93,7 +95,7 @@ public class Note01 : MonoBehaviour
 
         //ActionDisplay.SetActive(false);
         //ActionText.SetActive(false);
-        UINote.SetActive(true);
+        //UINote.SetActive(true);
         NoteCam.SetActive(true);
         ThePlayer.SetActive(false);
     }
