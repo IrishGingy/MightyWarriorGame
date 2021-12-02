@@ -30,12 +30,10 @@ public class Inventory : MonoBehaviour
 
     public bool Add(Item item)
     {
-        /*
-        if (!item.isDefaultItem) 
+        if (item.isDefaultItem) 
         { 
             items.Add(item);
         }
-        */
         if (items.Count >= space)
         {
             Debug.Log("Not enough room.");
