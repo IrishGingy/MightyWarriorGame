@@ -14,7 +14,6 @@ public class Interact : MonoBehaviour
             Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit hit;
 
-            /*
             if (Physics.Raycast(ray, out hit, interactDistance))
             {
                 if (hit.collider.CompareTag("Door"))
@@ -22,7 +21,6 @@ public class Interact : MonoBehaviour
                     hit.collider.GetComponent<Door>().ChangeDoorState();
                 }
             }
-            */
 
             if (Physics.Raycast(ray, out hit, interactDistance))
             {
