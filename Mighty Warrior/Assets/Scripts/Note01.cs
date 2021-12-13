@@ -88,7 +88,7 @@ public class Note01 : MonoBehaviour
         //ActionText.SetActive(false);
     }
 
-    private void ReadingNote()
+    public void ReadingNote()
     {
         //rend.material = materials[0];
         readingNote = true;
