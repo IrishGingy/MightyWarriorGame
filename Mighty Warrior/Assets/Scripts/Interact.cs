@@ -24,6 +24,14 @@ public class Interact : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, interactDistance))
             {
+                if (hit.collider.CompareTag("Grate"))
+                {
+                    hit.collider.GetComponent<Grate>().ChangeGrateState();
+                }
+            }
+
+            if (Physics.Raycast(ray, out hit, interactDistance))
+            {
                 if (hit.collider.CompareTag("Note"))
                 {
                     hit.collider.GetComponent<Note>().ReadingNote();

@@ -8,6 +8,7 @@ TagManager:
   - Obstacle
   - Note
   - Door
+  - Grate
   layers:
   - Default
   - TransparentFX
