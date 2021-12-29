@@ -37,6 +37,14 @@ public class Interact : MonoBehaviour
                     hit.collider.GetComponent<Note>().ReadingNote();
                 }
             }
+
+            if (Physics.Raycast(ray, out hit, interactDistance))
+            {
+                if (hit.collider.CompareTag("Drawer"))
+                {
+                    hit.collider.GetComponent<Drawer>().ChangeDrawerState();
+                }
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ TagManager:
   - Note
   - Door
   - Grate
+  - Drawer
   layers:
   - Default
   - TransparentFX

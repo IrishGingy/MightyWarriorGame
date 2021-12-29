@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    public Canvas canvas;
+    public GameObject dialogueScreen;
     public Text nameText;
     public Text dialogueText;
 
@@ -15,7 +15,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         sentences = new Queue<string>();
-        canvas.enabled = false;
+        dialogueScreen.SetActive(false);
     }
 
     private void Update()
@@ -29,7 +29,7 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue dialogue)
     {
         nameText.text = dialogue.name;
-        canvas.enabled = true;
+        dialogueScreen.SetActive(true);
 
         sentences.Clear();
 
@@ -56,6 +56,6 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         Debug.Log("End of conversation.");
-        canvas.enabled = false;
+        dialogueScreen.SetActive(false);
     }
 }
