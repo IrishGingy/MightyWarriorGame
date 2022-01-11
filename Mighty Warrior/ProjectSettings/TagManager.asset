@@ -10,6 +10,8 @@ TagManager:
   - Door
   - Grate
   - Drawer
+  - SlideDoor
+  - SplitDoor
   layers:
   - Default
   - TransparentFX
