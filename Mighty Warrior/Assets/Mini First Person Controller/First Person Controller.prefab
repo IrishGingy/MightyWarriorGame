@@ -333,7 +333,7 @@ GameObject:
   - component: {fileID: 370721199}
   - component: {fileID: 370721200}
   m_Layer: 0
-  m_Name: First Person Controller Minimal
+  m_Name: First Person Controller
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
