@@ -34,7 +34,7 @@ public class Interact : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Note"))
                 {
-                    hit.collider.GetComponent<Note>().ReadingNote();
+                    hit.collider.GetComponent<NoteWithCanvas>().ReadingNote();
                 }
             }
 
