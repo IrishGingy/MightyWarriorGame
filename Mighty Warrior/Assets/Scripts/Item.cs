@@ -8,8 +8,12 @@ public class Item : ScriptableObject
     public bool isDefaultItem = false;
 
     // "Virtual" derives different objects from the item and that way you can do different things to different items.
-    public virtual void Use()
+    public virtual void Use(Item item)
     {
-        Debug.Log("Using" + name);
+        if(item.name.Contains("Note"))
+        {
+            // Change preview image
+            Debug.Log("Something has been done...I think");
+        }
     }
 }
