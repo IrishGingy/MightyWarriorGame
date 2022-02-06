@@ -6,6 +6,8 @@ public class InventorySlot : MonoBehaviour
     public Image icon;
     public Button removeButton;
 
+    [SerializeField] Image previewImage;
+
     Item item;
 
     public void AddItem(Item newItem)
@@ -31,11 +33,19 @@ public class InventorySlot : MonoBehaviour
         Inventory.instance.Remove(item);
     }
 
-    public void UseItem()
+    /*public void UseItem()
     {
         if (item != null)
         {
             item.Use(item);
+        }
+    }*/
+
+    public void PreviewItem()
+    {
+        if (item != null)
+        {
+            item.Preview(item, previewImage);
         }
     }
 }

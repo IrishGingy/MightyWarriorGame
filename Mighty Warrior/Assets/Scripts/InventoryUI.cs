@@ -1,10 +1,13 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
     public Transform itemsParent;
     public GameObject inventoryUI;
     public Camera cam;
+
+    [SerializeField] Image previewImage;
 
     Inventory inventory;
     bool camLook;
@@ -14,6 +17,12 @@ public class InventoryUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Disables inventory UI on start.
+        if (inventoryUI.activeSelf)
+        {
+            inventoryUI.SetActive(false);
+        }
+
         inventory = Inventory.instance;
         inventory.onItemChangedCallback += UpdateUI;
 
@@ -27,6 +36,11 @@ public class InventoryUI : MonoBehaviour
         if (Input.GetButtonDown("Inventory"))
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);
+            if (inventoryUI.activeSelf == false)
+            {
+                previewImage.sprite = null;
+                previewImage.enabled = false;
+            }
 
             if (camLook)
             {

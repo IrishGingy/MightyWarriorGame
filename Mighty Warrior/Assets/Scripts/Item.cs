@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
 public class Item : ScriptableObject
@@ -15,5 +16,18 @@ public class Item : ScriptableObject
             // Change preview image
             Debug.Log("Something has been done...I think");
         }
+        if (item.name.Contains("List"))
+        {
+            // Change preview image
+            Debug.Log("Using " + name);
+
+        }
+    }
+
+    public virtual void Preview(Item item, Image preview)
+    {
+        preview.sprite = icon;
+        preview.enabled = true;
+        Debug.Log("Previewing " + name);
     }
 }

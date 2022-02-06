@@ -8,7 +8,7 @@ public class NoteWithCanvas : MonoBehaviour
     public Item item;
 
     public float TheDistance;
-    public Camera cam;
+    public Camera playerCam;
     public GameObject image;
 
     bool readingNote = false;
@@ -34,7 +34,7 @@ public class NoteWithCanvas : MonoBehaviour
             // Pressing Q places note in inventory.
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                cam.GetComponent<FirstPersonLook>().enabled = true;
+                playerCam.GetComponent<FirstPersonLook>().enabled = true;
                 Cursor.lockState = CursorLockMode.Locked;
                 readingNote = false;
                 image.SetActive(false);
@@ -54,7 +54,7 @@ public class NoteWithCanvas : MonoBehaviour
         // Explicitly making sure the note is NOT currently being read.
         if (readingNote == false)
         {
-            cam.GetComponent<FirstPersonLook>().enabled = false;
+            playerCam.GetComponent<FirstPersonLook>().enabled = false;
             Cursor.lockState = CursorLockMode.None;
             readingNote = true;
             //ActionDisplay.SetActive(false);
