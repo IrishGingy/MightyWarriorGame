@@ -12,6 +12,7 @@ TagManager:
   - Drawer
   - SlideDoor
   - SplitDoor
+  - Consumable
   layers:
   - Default
   - TransparentFX

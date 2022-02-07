@@ -10,6 +10,7 @@ public class NoteWithCanvas : MonoBehaviour
     public float TheDistance;
     public Camera playerCam;
     public GameObject image;
+    public GameObject manager;
 
     bool readingNote = false;
 
@@ -44,6 +45,7 @@ public class NoteWithCanvas : MonoBehaviour
                 {
                     Destroy(gameObject);
                 }
+                manager.GetComponents<AudioSource>()[1].Play();
             }
         }
     }

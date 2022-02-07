@@ -5,6 +5,8 @@ using UnityEngine;
 public class Interact : MonoBehaviour
 {
     public float interactDistance = 5f;
+    public bool HasKey = false;
+    public Item key;
 
     // Update is called once per frame
     void Update()
@@ -18,7 +20,14 @@ public class Interact : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Door"))
                 {
-                    hit.collider.GetComponent<Door>().ChangeDoorState();
+                    if (HasKey)
+                    {
+                        hit.collider.GetComponent<Door>().ChangeDoorState();
+                    }
+                    else
+                    {
+                        Debug.Log("This door needs a key!");
+                    }
                 }
             }
 
@@ -34,6 +43,12 @@ public class Interact : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Note"))
                 {
+                    if (hit.collider.GetComponentInChildren<NoteWithCanvas>().item.name == "To-Do List")
+                    {
+                        Debug.Log("Picked up Key");
+                        HasKey = true;
+                        Inventory.instance.Add(key);
+                    }
                     hit.collider.GetComponent<NoteWithCanvas>().ReadingNote();
                 }
             }
@@ -52,6 +67,22 @@ public class Interact : MonoBehaviour
                 {
                     hit.collider.GetComponent<SlideDoor>().ChangeDoorState();
                 }
+            }
+
+            if (Physics.Raycast(ray, out hit, interactDistance))
+            {
+                if (hit.collider.CompareTag("Consumable"))
+                {
+                    hit.collider.GetComponent<Consumable>().Consume();
+                }
+            }
+
+            if (Physics.Raycast(ray, out hit, interactDistance))
+            {
+                /*if (hit.collider.CompareTag("Key"))
+                {
+                    HasKey = true;
+                }*/
             }
         }
     }
