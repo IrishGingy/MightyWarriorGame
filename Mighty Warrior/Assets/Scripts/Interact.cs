@@ -26,6 +26,7 @@ public class Interact : MonoBehaviour
                     }
                     else
                     {
+                        hit.collider.GetComponent<Door>().Locked();
                         Debug.Log("This door needs a key!");
                     }
                 }

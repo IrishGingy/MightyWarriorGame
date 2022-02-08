@@ -13,6 +13,7 @@ public class NoteWithCanvas : MonoBehaviour
     public GameObject manager;
 
     bool readingNote = false;
+    Outline outline;
 
     private void Start()
     {
@@ -21,6 +22,9 @@ public class NoteWithCanvas : MonoBehaviour
 
         // Makes sure the image of the note is NOT showing on start.
         image.SetActive(false);
+
+        // Gets the outline script (on child object) to enable/disable.
+        outline = GetComponentInChildren<Outline>();
     }
 
     // Update is called once per frame
@@ -66,5 +70,18 @@ public class NoteWithCanvas : MonoBehaviour
             gameObject.GetComponentInChildren<MeshRenderer>().GetComponentInChildren<MeshRenderer>().enabled = false;
             image.SetActive(true);
         }
+    }
+
+    private void OnMouseOver()
+    {
+        if (TheDistance <= 3)
+        {
+            outline.enabled = true;
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        outline.enabled = false;
     }
 }

@@ -1,0 +1,2 @@
+- Improve rigidbody physics (look at references .txt doc)
+- Build boat in probuilder first as quick prototype, then make it in blender before polishing

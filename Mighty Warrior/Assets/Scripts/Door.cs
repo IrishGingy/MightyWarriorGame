@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Door : MonoBehaviour
 {
@@ -36,5 +37,14 @@ public class Door : MonoBehaviour
     {
         // Flips open bool
         open = !open;
+    }
+
+    public void Locked()
+    {
+        // Shows locked text
+        string ht = "Locked. I should look for the key.";
+        HelpText helpText = new HelpText();
+        HelpText h = helpText;
+        h.Display(ht);
     }
 }
