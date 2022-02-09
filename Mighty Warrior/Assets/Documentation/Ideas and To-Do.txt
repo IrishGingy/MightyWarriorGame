@@ -1,2 +1,8 @@
 - Improve rigidbody physics (look at references .txt doc)
 - Build boat in probuilder first as quick prototype, then make it in blender before polishing
+- You see a disposable camera that has a few pictures already taken (you find out pictures are memories, or you find out pictures are more sinister?)
+- You also find a journal with notes
+- Everything in the game at the beginning with the dead body is actually all in your head (physical representation of repressed thoughts and my state of mind)
+	* Game is about following brother, finding his dead body, wanting revenge and trying to find "killers", general anger then becomes understanding,
+	bitterness and resentment, and then finally acceptance. This is when I am saved, when I accept that God was good for Jacob, and therefore would be
+	good for me.

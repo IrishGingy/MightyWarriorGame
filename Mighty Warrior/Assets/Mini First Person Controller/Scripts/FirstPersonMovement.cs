@@ -4,6 +4,8 @@ using UnityEngine;
 public class FirstPersonMovement : MonoBehaviour
 {
     public float speed = 5;
+    public Rigidbody rb;
+    public float velocity;
 
     [Header("Running")]
     public bool canRun = true;
@@ -19,6 +21,7 @@ public class FirstPersonMovement : MonoBehaviour
 
     void Awake()
     {
+        velocity = rb.velocity.y;
         // Get the rigidbody on this.
         rigidbody = GetComponent<Rigidbody>();
     }
