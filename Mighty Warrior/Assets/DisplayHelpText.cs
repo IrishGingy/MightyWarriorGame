@@ -16,13 +16,9 @@ public class DisplayHelpText : MonoBehaviour
         scriptText = gameObject.GetComponent<Text>();
     }
 
-    private void FixedUpdate()
-    {
-        scriptText.text = helpText.text;
-    }
-
     public void Display()
     {
+        scriptText.text = helpText.text;
         gameObject.SetActive(true);
         StartCoroutine(Wait());
     }

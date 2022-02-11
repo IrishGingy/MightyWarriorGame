@@ -671,11 +671,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 76458383}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.12752807, y: 0.123888016, z: 0.14976025}
-  m_Center: {x: -0.0027727485, y: 0.003230095, z: -0.0030369759}
+  m_Size: {x: 0.28092182, y: 0.16344357, z: 0.1700077}
+  m_Center: {x: -0.0073025823, y: 0.02300787, z: 0.007086754}
 --- !u!4 &76458386
 Transform:
   m_ObjectHideFlags: 0
@@ -2470,7 +2470,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   helpText: {fileID: 11400000, guid: 7f0df37236477484f8c22fc7cdbfe9eb, type: 2}
-  text: {fileID: 280108936}
 --- !u!1 &300487000
 GameObject:
   m_ObjectHideFlags: 0
@@ -3136,7 +3135,8 @@ MonoBehaviour:
   doorOpenAngle: 90
   doorCloseAngle: 0
   smooth: 2
-  helpText: {fileID: 280108934}
+  ht: {fileID: 280108934}
+  helpText: {fileID: 11400000, guid: a07fc456b8ae73747973de0e4b57d8f9, type: 2}
 --- !u!1 &535487170
 GameObject:
   m_ObjectHideFlags: 0
@@ -3885,7 +3885,8 @@ MonoBehaviour:
   doorOpenAngle: -90
   doorCloseAngle: 0
   smooth: 2
-  helpText: {fileID: 280108934}
+  ht: {fileID: 280108934}
+  helpText: {fileID: 11400000, guid: 7f0df37236477484f8c22fc7cdbfe9eb, type: 2}
 --- !u!1 &672921805
 GameObject:
   m_ObjectHideFlags: 0
