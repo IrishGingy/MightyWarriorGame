@@ -1,19 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HelpText : MonoBehaviour
+[CreateAssetMenu(fileName = "New HelpText", menuName = "HelpText")]
+public class HelpText : ScriptableObject
 {
-    public Text helpText;
+    [TextArea]
+    public string text;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        helpText.enabled = false;
-    }
-
-    public void Display(string ht)
-    {
-        helpText.text = ht;
-        helpText.enabled = true;
-    }
+    public Sprite icon = null;
+    public Color color = Color.yellow;
 }

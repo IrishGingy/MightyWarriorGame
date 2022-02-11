@@ -8,6 +8,7 @@ public class TriggerSwim : MonoBehaviour
     bool c_pressed;
     bool s_pressed;
     bool swimming;
+    [SerializeField] float v;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,8 @@ public class TriggerSwim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        v = rb.velocity.y;
+
         if (Input.GetKey(KeyCode.C) && swimming)
         {
             c_pressed = true;
@@ -55,14 +58,36 @@ public class TriggerSwim : MonoBehaviour
         }
     }
 
+
+    /*private void WaitForFixedUpdate()
+    {
+
+        if (dive)
+        {
+            dive = false;
+        }
+    }*/
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Water")
         {
             //rb.constraints = RigidbodyConstraints.FreezePositionY;
-            swimming = true;
-            rb.velocity = new Vector3(0, 0, 0);
-            rb.useGravity = false;
+            /*if (v < -2f)
+            {
+                dive = true;
+            }*/
+            if (v <= -2f)
+            {
+                swimming = true;
+                Dive();
+            }
+            else
+            {
+                swimming = true;
+                rb.velocity = new Vector3(0, 0, 0);
+                rb.useGravity = false;
+            }
         }
     }
 
@@ -74,5 +99,12 @@ public class TriggerSwim : MonoBehaviour
             rb.drag = 0;
             rb.useGravity = true;
         }
+    }
+
+    void Dive()
+    {
+        rb.AddRelativeForce(new Vector3(0, -v / 2f, 0), ForceMode.Impulse);
+        rb.drag = 10;
+        FixedUpdate();
     }
 }

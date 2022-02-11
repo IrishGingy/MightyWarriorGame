@@ -10,12 +10,17 @@ public class Door : MonoBehaviour
     public float doorCloseAngle = 0f;
     public float smooth = 2f;
 
+    public GameObject ht;
+    public HelpText helpText;
+
+    DisplayHelpText script;
     bool blocking = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        ht.SetActive(false);
+        script = ht.GetComponent<DisplayHelpText>();
     }
 
     // Update is called once per frame
@@ -42,9 +47,15 @@ public class Door : MonoBehaviour
     public void Locked()
     {
         // Shows locked text
-        string ht = "Locked. I should look for the key.";
-        HelpText helpText = new HelpText();
-        HelpText h = helpText;
-        h.Display(ht);
+        //helpText.Display();
+        //HelpText ht = ScriptableObject.CreateInstance<HelpText>();
+        script.helpText = helpText;
+        script.helpText.text = helpText.text;
+        script.Display();
+    }
+
+    public void ChangeHelpText()
+    {
+
     }
 }
