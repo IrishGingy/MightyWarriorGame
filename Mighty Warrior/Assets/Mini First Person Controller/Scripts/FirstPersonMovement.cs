@@ -23,7 +23,7 @@ public class FirstPersonMovement : MonoBehaviour
     {
         velocity = rb.velocity.y;
         // Get the rigidbody on this.
-        rigidbody = GetComponent<Rigidbody>();
+        rigidbody = GetComponentInParent<Rigidbody>();
     }
 
     void FixedUpdate()

@@ -60,8 +60,8 @@ public class NoteWithCanvas : MonoBehaviour
         // Explicitly making sure the note is NOT currently being read.
         if (readingNote == false)
         {
-            playerCam.GetComponent<FirstPersonLook>().enabled = false;
             Cursor.lockState = CursorLockMode.None;
+            playerCam.GetComponent<FirstPersonLook>().enabled = false;
             readingNote = true;
             //ActionDisplay.SetActive(false);
             //ActionText.SetActive(false);

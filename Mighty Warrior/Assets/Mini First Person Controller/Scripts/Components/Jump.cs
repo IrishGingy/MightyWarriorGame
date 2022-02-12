@@ -13,13 +13,13 @@ public class Jump : MonoBehaviour
     void Reset()
     {
         // Try to get groundCheck.
-        groundCheck = GetComponentInChildren<GroundCheck>();
+        groundCheck = GetComponent<GroundCheck>();
     }
 
     void Awake()
     {
         // Get rigidbody.
-        rigidbody = GetComponent<Rigidbody>();
+        rigidbody = GetComponentInParent<Rigidbody>();
     }
 
     void LateUpdate()

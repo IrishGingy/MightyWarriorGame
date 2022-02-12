@@ -29,9 +29,9 @@ public class Crouch : MonoBehaviour
     void Reset()
     {
         // Try to get components.
-        movement = GetComponentInParent<FirstPersonMovement>();
-        headToLower = movement.GetComponentInChildren<Camera>().transform;
-        colliderToLower = movement.GetComponentInChildren<CapsuleCollider>();
+        movement = GetComponent<FirstPersonMovement>();
+        headToLower = movement.GetComponent<Camera>().transform;
+        colliderToLower = movement.GetComponent<CapsuleCollider>();
     }
 
     void LateUpdate()
