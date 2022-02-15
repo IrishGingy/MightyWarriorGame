@@ -2,6 +2,8 @@
 using UnityEngine.UI;
 using System;
 using Ink.Runtime;
+using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
 
 // This is a super bare bones example of how to play and display a ink story in Unity.
 public class BasicInkExample : MonoBehaviour {
@@ -67,14 +69,14 @@ public class BasicInkExample : MonoBehaviour {
 	void CreateContentView (string text) {
 		Text storyText = Instantiate (textPrefab) as Text;
 		storyText.text = text;
-		storyText.transform.SetParent (canvas.transform, false);
+		storyText.transform.SetParent ((Transform)gameObject.transform, false);
 	}
 
 	// Creates a button showing the choice text
 	Button CreateChoiceView (string text) {
 		// Creates the button from a prefab
 		Button choice = Instantiate (buttonPrefab) as Button;
-		choice.transform.SetParent (canvas.transform, false);
+		choice.transform.SetParent ((Transform)gameObject.transform, false);
 		
 		// Gets the text from the button prefab
 		Text choiceText = choice.GetComponentInChildren<Text> ();
@@ -89,18 +91,15 @@ public class BasicInkExample : MonoBehaviour {
 
 	// Destroys all the children of this gameobject (all the UI)
 	void RemoveChildren () {
-		int childCount = canvas.transform.childCount;
+		int childCount = ((Transform)gameObject.transform).childCount;
 		for (int i = childCount - 1; i >= 0; --i) {
-			GameObject.Destroy (canvas.transform.GetChild (i).gameObject);
+			GameObject.Destroy (((Transform)gameObject.transform).GetChild (i).gameObject);
 		}
 	}
 
 	[SerializeField]
 	private TextAsset inkJSONAsset = null;
 	public Story story;
-
-	[SerializeField]
-	private Canvas canvas = null;
 
 	// UI Prefabs
 	[SerializeField]
