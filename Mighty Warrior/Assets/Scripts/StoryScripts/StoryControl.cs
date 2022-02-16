@@ -16,49 +16,53 @@ public class StoryControl : MonoBehaviour
     public Story story;
 
     public TextMeshProUGUI storyText;
+    public List<Button> buttons;
 
-
+    private List<TextMeshProUGUI> buttonText;
+    
     // Start is called before the first frame update
     void Start()
     {
+        foreach (Button b in buttons)
+        {
+            buttonText.Add(b.GetComponentInChildren<TextMeshProUGUI>());
+        }
         // Good for testing.
         StartStory();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     void StartStory()
     {
         story = new Story(inkStory.text);
+        UpdateStory();
+    }
+
+    void UpdateStory()
+    {
         if (story != null)
         {
-            /*int temp = 0;
+            int temp = 0;
             string currentStory = "";
             while (story.canContinue && temp < 100)
             {
                 story.Continue();
                 temp++;
-                storyText.text = story.currentText;
+                currentStory += story.currentText;
+                storyText.text = currentStory;
                 if (temp > 99)
                 {
-                    Debug.Log(temp);
+                    Debug.Log("Temp is greater than 99: " + temp);
                 }
-                *//*string text = story.Continue();
-                text = text.Trim();
-                CreateContentView();*//*
-            }*/
-
-            story.Continue();
-            storyText.text = story.currentText;
-            if (story.canContinue)
-            {
-                story.Continue();
-                storyText.text = story.currentText;
             }
+        }
+        if (story.currentChoices.Count > 0)
+        {
+            MakeChoices();
+        }
+        else
+        {
+            //buttonText[0].text = "Restart";
+            Debug.Log("Story complete");
         }
     }
 
@@ -69,6 +73,24 @@ public class StoryControl : MonoBehaviour
 
     public void Choice(int choiceIndex)
     {
+        story.ChooseChoiceIndex(choiceIndex);
+        UpdateStory();
+    }
 
+    void MakeChoices()
+    {
+        for (int i = 0; i < buttons.Count; i++)
+        {
+            if (i < story.currentChoices.Count)
+            {
+                buttons[i].gameObject.SetActive(true);
+                buttonText[i].text = story.currentChoices[i].text;
+            }
+            else
+            {
+                buttonText[i].text = "";
+                buttons[i].gameObject.SetActive(false);
+            }
+        }
     }
 }
