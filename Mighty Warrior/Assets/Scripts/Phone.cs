@@ -29,11 +29,6 @@ public class Phone : MonoBehaviour
     {
         // Referencing other script's DistanceFromTarget variable.
         TheDistance = PlayerCasting.DistanceFromTarget;
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            PickUpPhone();
-        }
     }
 
     private void OnMouseOver()
@@ -41,6 +36,11 @@ public class Phone : MonoBehaviour
         if (TheDistance <= 3)
         {
             outline.enabled = true;
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                PickUpPhone();
+            }
         }
     }
 

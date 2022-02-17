@@ -16,17 +16,12 @@ public class StoryControl : MonoBehaviour
     public Story story;
 
     public TextMeshProUGUI storyText;
-    public List<Button> buttons;
-
-    private List<TextMeshProUGUI> buttonText;
+    public Button[] buttons;
+    public TextMeshProUGUI[] buttonText;
     
     // Start is called before the first frame update
     void Start()
     {
-        foreach (Button b in buttons)
-        {
-            buttonText.Add(b.GetComponentInChildren<TextMeshProUGUI>());
-        }
         // Good for testing.
         StartStory();
     }
@@ -79,7 +74,7 @@ public class StoryControl : MonoBehaviour
 
     void MakeChoices()
     {
-        for (int i = 0; i < buttons.Count; i++)
+        for (int i = 0; i < buttonText.Length; i++)
         {
             if (i < story.currentChoices.Count)
             {
