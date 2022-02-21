@@ -22,6 +22,9 @@ public class LPPlayerController : MonoBehaviour
     [SerializeField] private bool grounded = false;
     private Vector3 velocity = Vector3.zero;
 
+    // Animation
+    private Animator anim;
+
     private void Start()
     {
         GetReferences();
@@ -68,6 +71,15 @@ public class LPPlayerController : MonoBehaviour
         }
     }
 
+    private void HandleAnimations()
+    {
+        // Movement animations.
+        if (moveDirection == Vector3.zero)
+        {
+
+        }
+    }
+
     private void HandleIsGrounded()
     {
         // Creates sphere at bottom of player to detect ground layer collision to allow jumping.
@@ -96,6 +108,7 @@ public class LPPlayerController : MonoBehaviour
     private void GetReferences()
     {
         controller = GetComponent<CharacterController>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     private void InitVariables()
