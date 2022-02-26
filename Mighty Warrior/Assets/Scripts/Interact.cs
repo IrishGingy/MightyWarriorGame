@@ -18,6 +18,7 @@ public class Interact : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, interactDistance))
             {
+                // Door
                 if (hit.collider.CompareTag("Door"))
                 {
                     if (HasKey)
@@ -30,18 +31,14 @@ public class Interact : MonoBehaviour
                         Debug.Log("This door needs a key!");
                     }
                 }
-            }
 
-            if (Physics.Raycast(ray, out hit, interactDistance))
-            {
+                // Grate
                 if (hit.collider.CompareTag("Grate"))
                 {
                     hit.collider.GetComponent<Grate>().ChangeGrateState();
                 }
-            }
 
-            if (Physics.Raycast(ray, out hit, interactDistance))
-            {
+                // Note
                 if (hit.collider.CompareTag("Note"))
                 {
                     if (hit.collider.GetComponentInChildren<NoteWithCanvas>().item.name == "To-Do List")
@@ -52,38 +49,24 @@ public class Interact : MonoBehaviour
                     }
                     hit.collider.GetComponent<NoteWithCanvas>().ReadingNote();
                 }
-            }
 
-            if (Physics.Raycast(ray, out hit, interactDistance))
-            {
+                // Drawer
                 if (hit.collider.CompareTag("Drawer"))
                 {
                     hit.collider.GetComponent<Drawer>().ChangeDrawerState();
                 }
-            }
 
-            if (Physics.Raycast(ray, out hit, interactDistance))
-            {
+                // Slide Door
                 if (hit.collider.CompareTag("SlideDoor"))
                 {
                     hit.collider.GetComponent<SlideDoor>().ChangeDoorState();
                 }
-            }
 
-            if (Physics.Raycast(ray, out hit, interactDistance))
-            {
+                // Consumable
                 if (hit.collider.CompareTag("Consumable"))
                 {
                     hit.collider.GetComponent<Consumable>().Consume();
                 }
-            }
-
-            if (Physics.Raycast(ray, out hit, interactDistance))
-            {
-                /*if (hit.collider.CompareTag("Key"))
-                {
-                    HasKey = true;
-                }*/
             }
         }
     }

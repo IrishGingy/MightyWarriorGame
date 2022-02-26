@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Handheld Item", menuName = "Items/Handheld")]
-public class Handheld : Items
+public class Handheld : Item
 {
     public GameObject prefab;
     public bool readable;
     public HandheldType handheldType;
 }
 
-public enum HandheldType { Note, Phone }
+public enum HandheldType { Phone, Note }

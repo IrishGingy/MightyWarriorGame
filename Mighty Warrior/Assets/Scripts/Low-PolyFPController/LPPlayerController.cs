@@ -33,6 +33,10 @@ public class LPPlayerController : MonoBehaviour
 
     private void Update()
     {
+        /*if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            Debug.Log("Play phone animation...");
+        }*/
         HandleIsGrounded();
         HandleJumping();
         HandleGravity();
@@ -76,7 +80,7 @@ public class LPPlayerController : MonoBehaviour
         // Movement animations.
         if (moveDirection == Vector3.zero)
         {
-
+            
         }
     }
 

@@ -6,3 +6,4 @@
 	* Game is about following brother, finding his dead body, wanting revenge and trying to find "killers", general anger then becomes understanding,
 	bitterness and resentment, and then finally acceptance. This is when I am saved, when I accept that God was good for Jacob, and therefore would be
 	good for me.
++ Put hands on different plane so they don't clip through walls (https://www.youtube.com/watch?v=OMVYyW54QlE)
