@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class DialogueTrigger : MonoBehaviour
 {
-    public Dialogue dialogue;
+    /*public Dialogue dialogue;
 
     private void Awake()
     {
@@ -17,11 +17,23 @@ public class DialogueTrigger : MonoBehaviour
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
     }
 
-    /*private void OnTriggerEnter(Collider other)
+    *//*private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
             TriggerDialogue();
         }
     }*/
+
+    [SerializeField] private TextAsset inkJSON;
+    private DialogueManager dialogueManager;
+
+    public void TriggerDialogue()
+    {
+        dialogueManager = FindObjectOfType<DialogueManager>();
+        if (dialogueManager.dialogueIsPlaying != true)
+        {
+            dialogueManager.StartDialogue(inkJSON);
+        }
+    }
 }

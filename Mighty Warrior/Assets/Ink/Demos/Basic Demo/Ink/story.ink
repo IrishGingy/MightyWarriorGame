@@ -1,5 +1,5 @@
 Would you like to begin?
-* [Begin Story...]
++ [Begin Story...]
     -> ch1_01
 
 == ch1_01 ==

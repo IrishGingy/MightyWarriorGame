@@ -25,6 +25,8 @@ public class LPPlayerController : MonoBehaviour
     // Animation
     private Animator anim;
 
+    private DialogueManager dialogueManager;
+
     private void Start()
     {
         GetReferences();
@@ -33,6 +35,12 @@ public class LPPlayerController : MonoBehaviour
 
     private void Update()
     {
+        // This might be useful if we decide to restrict player movement while dialogue is playing.
+        /*if (dialogueManager.dialogueIsPlaying)
+        {
+            return;
+        }*/
+
         /*if (Input.GetKeyDown(KeyCode.Tab))
         {
             Debug.Log("Play phone animation...");
@@ -113,6 +121,7 @@ public class LPPlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         anim = GetComponentInChildren<Animator>();
+        dialogueManager = FindObjectOfType<DialogueManager>();
     }
 
     private void InitVariables()
