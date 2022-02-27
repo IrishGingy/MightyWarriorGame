@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Phone
   m_EditorClassIdentifier: 
   name: Phone
-  description: My phone. My life. The bane of my existence.
   icon: {fileID: 21300000, guid: 78c38393e8378f542804b3348d5d3239, type: 3}
+  isDefaultItem: 0
   prefab: {fileID: 728983844309139784, guid: a0bc5454c5b78794784d028f40830415, type: 3}
   readable: 0
   handheldType: 1

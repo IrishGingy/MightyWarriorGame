@@ -10,4 +10,4 @@ public class Handheld : Item
     public HandheldType handheldType;
 }
 
-public enum HandheldType { Phone, Note }
+public enum HandheldType { Note, Phone }

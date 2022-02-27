@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PickupManager : MonoBehaviour
 {
-    private int currentlyEquippedHandheld = 0;
-    private GameObject currentHandheldObject = null;
+    public int currentlyEquippedHandheld = -1;
+    public GameObject currentHandheldObject = null;
+    public GameObject HandheldHolderR = null;
 
-    [SerializeField] private Transform HandheldHolderR = null;
+    private bool holdingObject = false;
     private Animator anim;
     private Inventory inventory;
 
@@ -23,27 +24,40 @@ public class PickupManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             Debug.Log("You just pressed tab...");
-            UnequipHandheld();
-            EquipHandheld(inventory.GetItem(HandheldType.Phone));
+            if (currentHandheldObject != null)
+            {
+                UnequipHandheld();
+                //EquipHandheld(inventory.GetItem(HandheldType.Phone));
+                holdingObject = false;
+            }
+            else
+            {
+                EquipHandheld(inventory.GetItem(HandheldType.Phone));
+                holdingObject = true;
+            }
+            //UnequipHandheld();
         }
     }
 
     private void EquipHandheld(Handheld handheld)
     {
         currentlyEquippedHandheld = (int)handheld.handheldType;
-        anim.SetInteger("handheldType", (int)handheld.handheldType);
-        currentHandheldObject = Instantiate(handheld.prefab, HandheldHolderR);
+        anim.SetInteger("handheldType", currentlyEquippedHandheld);
+        //currentHandheldObject = Instantiate(handheld.prefab, HandheldHolderR.transform);
+        //SetLayer(currentHandheldObject, HandheldHolderR.layer, true);
     }
 
     private void UnequipHandheld()
     {
         anim.SetTrigger("unequipHandheld");
-        Destroy(currentHandheldObject);
+        anim.SetInteger("handheldType", -1);
+        //Destroy(currentHandheldObject);
     }
 
     private void GetReferences()
     {
         anim = GetComponentInChildren<Animator>();
+        anim.SetInteger("handheldType", -1);
         inventory = Inventory.instance;
     }
 }
