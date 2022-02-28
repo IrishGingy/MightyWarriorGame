@@ -1,12 +1,12 @@
 Would you like to begin?
-+ [Begin Story...]
+* [Begin Story...]
     -> ch1_01
 
 == ch1_01 ==
-Flesh: "Thoughts, oh so many thoughts! The more you think, the more you'll
+Flesh: "Thoughts, oh so many thoughts! The more you think, the more you'll <>
 be prepared for whatever comes your way. Did you finish everything?"
 *   "Yes, of course"[] I said, just to end this thought.
-    Flesh: "Are you absolutely sure? You wouldn't want to have to be suddenly
+    Flesh: "Are you absolutely sure? You wouldn't want to have to be suddenly <>
     overwhelmed tomorrow."
     * *     "Yes, I'm sure"
             -> CONFIDENT

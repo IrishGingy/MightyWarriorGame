@@ -12,10 +12,12 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
 
     [Header("Choices UI")]
-    [SerializeField] private GameObject[] choices;
+    [SerializeField] private GameObject choiceParent;
+    [SerializeField] private Button[] choices;
     private TextMeshProUGUI[] choicesText;
 
     private Story currentStory;
+    private int numChoices;
     public bool dialogueIsPlaying { get; private set; }
 
     private static DialogueManager instance;
@@ -32,11 +34,12 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
+        choiceParent.SetActive(false);
 
         // Get all of the choices and their text.
         choicesText = new TextMeshProUGUI[choices.Length];
         int index = 0;
-        foreach (GameObject choice in choices)
+        foreach (Button choice in choices)
         {
             choicesText[index] = choice.GetComponentInChildren<TextMeshProUGUI>();
             index++;
@@ -51,11 +54,32 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        // If player presses continue buttons, story is continued.
-        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Return) || Input.GetKeyUp(KeyCode.E))
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            if(numChoices > 0)
+            {
+                dialogueText.enabled = false;
+                choiceParent.SetActive(true);
+                choices[0].Select();
+            }
+            else
+            {
+                ContinueStory();
+                choiceParent.SetActive(false);
+                dialogueText.enabled = true;
+            }
+
+        }
+
+        /*// If player presses continue buttons, story is continued.
+            if (currentStory.currentChoices.Count == 0 && (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.Return) || Input.GetKeyUp(KeyCode.E)))
         {
             ContinueStory();
         }
+        if (currentStory.currentChoices.Count != 0 && (Input.GetKeyUp(KeyCode.E)))
+        {
+
+        }*/
     }
 
     public void StartDialogue(TextAsset json)
@@ -68,24 +92,42 @@ public class DialogueManager : MonoBehaviour
         //Debug.Log(json.text);
     }
 
-    private void ContinueStory()
+    private void ContinueStory(bool continueAfterChoice = false)
     {
-        if (currentStory.canContinue)
+        if (continueAfterChoice == false)
         {
-            // set text for the current dialogue line.
-            dialogueText.text = currentStory.Continue();
-            // display choices, if any, for this dialogue line.
-            DisplayChoices();
+            if (currentStory.canContinue)
+            {
+                // set text for the current dialogue line.
+                dialogueText.text = currentStory.Continue();
+                // display choices, if any, for this dialogue line.
+                DisplayChoices();
+            }
+            else
+            {
+                ExitDialogue();
+            }
         }
         else
         {
-            ExitDialogue();
+            if (currentStory.canContinue)
+            {
+                // set text for the current dialogue line.
+                dialogueText.text = currentStory.Continue();
+                // display choices, if any, for this dialogue line.
+                DisplayChoices();
+            }
+            else
+            {
+                ExitDialogue();
+            }
         }
     }
 
     private void DisplayChoices()
     {
         List<Choice> currentChoices = currentStory.currentChoices;
+        numChoices = currentChoices.Count;
 
         if (currentChoices.Count > choices.Length)
         {
@@ -102,10 +144,19 @@ public class DialogueManager : MonoBehaviour
             index++;
         }
         // go through remaining choices the UI supports and make sure they're hidden.
-        for (int i = 0; i < choices.Length; i++)
+        for (int i = index; i < choices.Length; i++)
         {
             choices[i].gameObject.SetActive(false);
         }
+    }
+
+    // When we click the choice button, tell the story to choose that choice!
+    public void OnClickChoiceButton(int choiceIndex)
+    {
+        currentStory.ChooseChoiceIndex(choiceIndex);
+        ContinueStory(true);
+        choiceParent.SetActive(false);
+        dialogueText.enabled = true;
     }
 
     private void ExitDialogue()
