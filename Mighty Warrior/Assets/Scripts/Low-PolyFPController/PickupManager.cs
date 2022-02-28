@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PickupManager : MonoBehaviour
 {
@@ -11,19 +12,27 @@ public class PickupManager : MonoBehaviour
     private bool holdingObject = false;
     private Animator anim;
     private Inventory inventory;
+    private Keyboard keyboard;
+
+    // Dialogue
+    [Header("Dialogue")]
+    [SerializeField] private DialogueTrigger trigger;
 
     // Start is called before the first frame update
     void Start()
     {
         GetReferences();
+        InitVariables();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (keyboard.tabKey.isPressed)
         {
             Debug.Log("You just pressed tab...");
+            trigger.TriggerDialogue();
+
             if (currentHandheldObject != null)
             {
                 UnequipHandheld();
@@ -59,5 +68,10 @@ public class PickupManager : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         anim.SetInteger("handheldType", -1);
         inventory = Inventory.instance;
+    }
+
+    private void InitVariables()
+    {
+
     }
 }
