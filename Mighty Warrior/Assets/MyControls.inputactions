@@ -2,7 +2,7 @@
     "name": "MyControls",
     "maps": [
         {
-            "name": "Player",
+            "name": "Make Choices",
             "id": "eb5b2f02-80c2-4adf-aced-0e7aa2ba7489",
             "actions": [
                 {
@@ -10,6 +10,14 @@
                     "type": "Button",
                     "id": "b4cd4be2-bee2-4a3e-a643-2ca1a07c5b08",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Scroll Between Choices",
+                    "type": "Value",
+                    "id": "bab9bde6-d301-41a2-8f52-8b51a1bf92bb",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": ""
                 }
@@ -58,6 +66,44 @@
                     "action": "SelectChoices",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "0941f128-5afe-4caa-9d7d-01698e9217fa",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scroll Between Choices",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Player Movement",
+            "id": "e0c36f89-d298-46b5-b042-eddb600de0b2",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "20c263a9-f8f1-4efa-b33f-f7f50d4723e4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c4d42007-9153-44dc-afcb-5a012cb501bd",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

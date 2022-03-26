@@ -39,7 +39,7 @@ public class NoteWithCanvas : MonoBehaviour
             // Pressing Q places note in inventory.
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                playerCam.GetComponent<FirstPersonLook>().enabled = true;
+                playerCam.GetComponent<LPCameraController>().enabled = true;
                 Cursor.lockState = CursorLockMode.Locked;
                 readingNote = false;
                 image.SetActive(false);
@@ -61,7 +61,7 @@ public class NoteWithCanvas : MonoBehaviour
         if (readingNote == false)
         {
             Cursor.lockState = CursorLockMode.None;
-            playerCam.GetComponent<FirstPersonLook>().enabled = false;
+            playerCam.GetComponent<LPCameraController>().enabled = false;
             readingNote = true;
             //ActionDisplay.SetActive(false);
             //ActionText.SetActive(false);

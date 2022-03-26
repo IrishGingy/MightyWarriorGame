@@ -7,12 +7,13 @@ public class PickupManager : MonoBehaviour
 {
     public int currentlyEquippedHandheld = -1;
     public GameObject currentHandheldObject = null;
-    public GameObject HandheldHolderR = null;
+    public GameObject HandheldHolderR = null; 
+    public float interactDistance = 5f;
 
     private bool holdingObject = false;
     private Animator anim;
     private Inventory inventory;
-    private Keyboard keyboard;
+    private bool pressed = false;
 
     // Dialogue
     [Header("Dialogue")]
@@ -28,7 +29,7 @@ public class PickupManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (keyboard.tabKey.isPressed)
+        if (Input.GetKey(KeyCode.Tab))
         {
             Debug.Log("You just pressed tab...");
             trigger.TriggerDialogue();
@@ -45,6 +46,31 @@ public class PickupManager : MonoBehaviour
                 holdingObject = true;
             }
             //UnequipHandheld();
+        }
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            pressed = true;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (pressed)
+        {
+            Ray ray = new Ray(transform.position, transform.forward);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, interactDistance))
+            {
+                Debug.Log(hit.distance);
+                PickUp(hit);
+            }
+            else
+            {
+                Debug.Log(hit.distance);
+                Debug.Log("aksdflasd");
+            }
         }
     }
 
@@ -73,5 +99,22 @@ public class PickupManager : MonoBehaviour
     private void InitVariables()
     {
 
+    }
+
+    private void PickUp(RaycastHit hit)
+    {
+        if (hit.collider.CompareTag("Note"))
+        {
+            Debug.Log("NIce");
+        }
+        switch (hit.collider.tag)
+        {
+            case "Note":
+                Debug.Log("Picked up note.");
+                break;
+            default:
+                Debug.Log("Nothing");
+                break;
+        }
     }
 }

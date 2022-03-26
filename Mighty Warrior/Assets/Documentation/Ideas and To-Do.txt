@@ -11,3 +11,11 @@
 - Make multiple response dialogue system using ScriptableObjects and JSON files
 - Make note animations (don't forget to include walking animations)
 - Make movement animations (walking, running, idling)
+
+
+
+
+
+- Story Ideas:
+	* Opening scene like firewatch that tells you who you (main character) are. The "wheel of opportunity" determines your opportunities and who you become. This shows that
+	we are all an opportunity or two away from being a complete monster without God.
